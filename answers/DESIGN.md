@@ -13,7 +13,7 @@
 - Observability strategy (logging, metrics, tracing)?
 >> logging needed for tracing error and monitoring the service. Logging need to maintain by rolling log daily, weekly or monthly by cron task or spesific service. Log must be standardize to make it ease to check. Log must be readable. We can use logging tools.
 >> Metric also need to define. Needed metric should define and push into proper monitoring tool. Metrics (technical metric and business metric) should be divided base on the stakeholder. For metric tool we can use open source tools such as Grafana by using Promotheus metrics or Kibana. Or with paid tool such as Data Dog or New relic. For Business metrics, can use open source like Grafana or Kibana. Or can use paid tools such as Tableau or PowerBI. 
->> Tracing needed to check and tracing errors, improve performance and flow of the codes. We can check any bottleneck, errors, and troubleshoot so we can fix our code easier. We can use existing GO tracing tools such as Jaeger
+>> Tracing needed to check and tracing errors, improve performance and flow of the codes. We can check any bottleneck, errors, and troubleshoot so we can fix our code easier. We can use GO tracing tools such as Jaeger
 
 
 - Go API framework of choice (e.g., Gin, Chi) and why
