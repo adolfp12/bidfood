@@ -1,5 +1,0 @@
-- Buat Interface buat Simulate DB Map itu
-- Buat router
-- Pakai channel di bagian API. Pake WG.Wait aja
-- Tambahin middleware kl sempet, sama Auth di API
-
