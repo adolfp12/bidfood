@@ -27,7 +27,7 @@ func main() {
 
 	shutdown, stop := signal.NotifyContext(context.Background(), syscall.SIGTERM, syscall.SIGINT)
 	defer stop()
-	<-shutdown.Done()
+	<-shutdown.Done() //Gracefull shutdown
 
 	log.Println("Shutting down server...")
 
