@@ -142,7 +142,7 @@ func (c *Controller) UpdateProductByID(w http.ResponseWriter, r *http.Request, p
 	resp, err := c.ProductService.UpdateProduct(product)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusOK)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -165,7 +165,7 @@ func (c *Controller) DeleteProduct(w http.ResponseWriter, r *http.Request, param
 	resp, err := c.ProductService.DeleteProduct(id)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusOK)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 

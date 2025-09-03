@@ -63,7 +63,7 @@ func AllRoutes() Routes {
 		Route{"UpdateProductByID", "PUT", "/products/:id", controllerImpl.UpdateProductByID},
 		Route{"DeleteProduct", "DELETE", "/products/:id", controllerImpl.DeleteProduct},
 
-		Route{"InsertDataPagination", "GET", "/insertdata", controllerImpl.TestAddProduct}, // API insert initial data to test pagination
+		Route{"InsertDataPagination", "PUT", "/insertdata", controllerImpl.TestAddProduct}, // API insert initial data to test pagination
 	}
 	return routes
 }

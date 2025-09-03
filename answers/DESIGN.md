@@ -17,4 +17,4 @@
 
 
 - Go API framework of choice (e.g., Gin, Chi) and why
->> Choosing a Go API framework should be based on your specific needs, such as the framework’s support, ease of use, available libraries, and performance. It’s important to research and evaluate these factors by building a proof of concept (POC). Select the framework that best fits your requirements. For example, I once switched HTTP libraries because the previous one was no longer supported.
+>> Choosing a Go API framework should be based on our needs, such as the framework’s support, ease of use, available libraries, scalability and performance. It’s important to research and evaluate these factors by building a proof of concept (POC). Select the framework that best fits your requirements. For example (not on framework, but similar reason), I once switched HTTP libraries because the previous one was no longer supported.

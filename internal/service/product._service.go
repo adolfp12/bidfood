@@ -56,10 +56,12 @@ func (s *ProductService) GetProductByID(primaryID int) (*model.Product, error) {
 func (s *ProductService) UpdateProduct(product model.Product) (*model.Product, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock()
-	s.m[product.Id] = product
-	s.id++
+	if _, exists := s.m[product.Id]; exists {
+		s.m[product.Id] = product
+		return &product, nil
+	}
 	// Belum ada penjagaan kl ID nya ga ada
-	return &product, nil
+	return &product, errors.New(constant.ProductNotFoundErr)
 }
 
 func (s *ProductService) DeleteProduct(primaryID int) (int, error) {
@@ -68,13 +70,13 @@ func (s *ProductService) DeleteProduct(primaryID int) (int, error) {
 
 	if _, exists := s.m[primaryID]; exists {
 		delete(s.m, primaryID)
+		s.ids = append(s.ids[:primaryID-1], s.ids[primaryID:]...)
 		log.Printf("Product with id %d was deleted.", primaryID)
-	} else {
-		log.Printf("Product with id %d not exist.", primaryID)
+		return primaryID, nil
 	}
 
-	// Belum ada penjagaan kl ID nya ga ada
-	return primaryID, nil
+	log.Printf("Product with id %d not exist.", primaryID)
+	return primaryID, errors.New(constant.ProductNotFoundErr)
 }
 
 func (s *ProductService) GetAllProduct() ([]model.Product, error) {
@@ -125,7 +127,7 @@ func (s *ProductService) GetPaginationProduct(page int) ([]model.Product, error)
 
 	var itemsInPage = 5
 	startIndex := page * itemsInPage
-	if startIndex >= s.id {
+	if startIndex >= len(s.ids) {
 		return nil, errors.New(constant.ExceedsRequest)
 	}
 
