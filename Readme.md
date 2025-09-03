@@ -1,5 +1,5 @@
 How to run
-- `go mod init bidfood`
+- clone this repository
 - `go mod tidy`
 - `go run ./cmd/server/main.go`
 
@@ -17,6 +17,9 @@ Bonus endpoint:
 - Pagination `curl --location 'http://localhost:8080/products?page=1' --header 'X-API-Key: bidfoodkey'`
 - Filter. This filter only on Name of Product `curl --location 'http://localhost:8080/products?filter=Apple' --header 'X-API-Key: bidfoodkey'`
 - Channel. I use channel on gracefull shutdown. Please find on cmd/server/main.go
+
+Additional :
+- I create middlewware to logging http request
 
 No. 2
 You find my answer on ./answers/DESIGN.md
