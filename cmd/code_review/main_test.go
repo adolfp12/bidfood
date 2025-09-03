@@ -20,7 +20,7 @@ func Test_createUser(t *testing.T) {
 	if err == nil {
 		t.Error("Expected error for existing user, got nil")
 	}
-	expectedErr := "User already exist!!"
+	expectedErr := "user already exist!!"
 	if err.Error() != expectedErr {
 		t.Errorf("Expected error %q, got %q", expectedErr, err.Error())
 	}

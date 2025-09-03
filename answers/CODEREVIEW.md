@@ -27,7 +27,7 @@ err := createUser(name)
     }
 ```
 
-4. need to create unit tests
+4. need to create unit tests. You can look on ./cmd/code_review/main_test.go
 
 5. trim the input to remove any leading or trailing spaces, so no extra space is saved. Add this line: 
 
@@ -60,6 +60,9 @@ var users = make(map[string]string)
 func createUser(name string) error {
 	log.Printf("Data {%s}", name)
 	if _, exists := users[name]; exists {
+		/* Issue #2 need to check if the input exists in the map
+		if it does, return an error. If it doesn’t, insert it into the map.
+		*/
 		return errors.New("user already exist!!")
 	}
 	users[name] = time.Now().String()
@@ -83,7 +86,7 @@ func handleRequest(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Fprintln(w, "User inserted! ", err.Error())
+	fmt.Fprintln(w, "User inserted! ")
 	log.Println("Finished")
 	w.WriteHeader(http.StatusOK)
 }
