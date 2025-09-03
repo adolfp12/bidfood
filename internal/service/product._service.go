@@ -37,6 +37,13 @@ func NewService() *ProductService {
 func (s *ProductService) InsertProduct(product model.Product) (model.Product, error) {
 	s.mu.Lock()
 	defer s.mu.Unlock() // Kayaknya ga perlu karna kan ini insert, bukan
+
+	for _, existingProduct := range s.m {
+		if existingProduct.Name == product.Name {
+			return product, errors.New(constant.ProductAlreadyExist)
+		}
+	}
+
 	s.ids = append(s.ids, s.id)
 	product.Id = s.id
 	s.m[s.id] = product

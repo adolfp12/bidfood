@@ -47,19 +47,19 @@ func (c *Controller) GetAllProduct(w http.ResponseWriter, r *http.Request, _ htt
 		}
 		resp, err = c.ProductService.GetPaginationProduct(id)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusOK)
+			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
 	} else if filter := strings.TrimSpace(r.URL.Query().Get("filter")); filter != "" {
 		resp, err = c.ProductService.GetAllProductByFilter(filter)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusOK)
+			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
 	} else {
 		resp, err = c.ProductService.GetAllProduct()
 		if err != nil {
-			fmt.Fprint(w, err.Error())
+			http.Error(w, err.Error(), http.StatusBadRequest)
 			return
 		}
 	}
@@ -79,7 +79,7 @@ func (c *Controller) AddNewProduct(w http.ResponseWriter, r *http.Request, _ htt
 	resp, err := c.ProductService.InsertProduct(product)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusOK)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
@@ -103,7 +103,7 @@ func (c *Controller) GetProductByID(w http.ResponseWriter, r *http.Request, para
 	resp, err := c.ProductService.GetProductByID(id)
 
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusOK)
+		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
 
